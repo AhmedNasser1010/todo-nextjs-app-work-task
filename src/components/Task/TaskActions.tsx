@@ -1,5 +1,5 @@
 import ActionIcon from './ActionIcon'
-import { Trash, Pencil, SquareCheck } from "lucide-react";
+import { SquareCheck } from "lucide-react";
 import { useAppDispatch } from '@/rtk/hooks';
 import { deleteTask, toggleTask, updateTask } from '@/rtk/slices/tasksSlice';
 import { TaskType } from '@/types/TaskType';
@@ -33,7 +33,6 @@ export default function TaskActions({ task }: { task: TaskType }) {
     <div className="flex">
       <DeleteTaskDialog handleDeleteTask={handleDeleteTask} title={task.title} />
       <EditTaskDialog handleEditTask={handleEditTask} task={task} />
-
       <ActionIcon><SquareCheck size={iconSize} onClick={handleToggleTask} /></ActionIcon>
     </div>
   )

@@ -26,7 +26,7 @@ export default function DeleteTaskDialog({
       <DialogTrigger open={open} setOpen={setOpen}  className='w-7 h-5 flex items-center justify-center cursor-pointer'>
         <Trash size={14} />
       </DialogTrigger>
-      <Dialog open={open} setOpen={setOpen}>
+      <Dialog open={open}>
         <DialogContent className="flex flex-col justify-between">
           <X onClick={() => setOpen(false)} className='absolute top-2 right-2 cursor-pointer w-5' />
           <DialogHeader>

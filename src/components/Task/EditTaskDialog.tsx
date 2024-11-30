@@ -42,7 +42,7 @@ export default function EditTaskDialog({
       >
         <Pencil size={14} />
       </DialogTrigger>
-      <Dialog open={open} setOpen={setOpen}>
+      <Dialog open={open}>
         <DialogContent className="flex flex-col justify-between">
           <X
             onClick={() => setOpen(false)}
