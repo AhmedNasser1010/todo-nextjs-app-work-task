@@ -3,12 +3,17 @@ import { RootState } from "../store";
 import { TaskType } from "@/types/TaskType";
 
 const loadTasksFromLocalStorage = (): TaskType[] => {
-  const tasks = localStorage.getItem("tasks");
-  return tasks ? JSON.parse(tasks) : [];
+  if (typeof window !== "undefined") {
+    const tasks = localStorage.getItem("tasks");
+    return tasks ? JSON.parse(tasks) : [];
+  }
+  return [];
 };
 
 const saveTasksToLocalStorage = (tasks: TaskType[]) => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  if (typeof window !== "undefined") {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
 };
 
 const initialState: TaskType[] = loadTasksFromLocalStorage();
