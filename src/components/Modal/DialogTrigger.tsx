@@ -9,5 +9,5 @@ export default function DialogTrigger({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  return <div onClick={() => setOpen(true)} className={`${open ? 'hidden' : 'block'} ${className}`}>{children}</div>;
+  return <div onClick={() => setOpen(true)} className={`${className}`}>{children}</div>;
 }

@@ -1,27 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { TaskType } from "@/types/TaskType";
+import saveTasksToLocalStorage from "@/util/saveTasksToLocalStorage";
 
-const loadTasksFromLocalStorage = (): TaskType[] => {
-  if (typeof window !== "undefined") {
-    const tasks = localStorage.getItem("tasks");
-    return tasks ? JSON.parse(tasks) : [];
-  }
-  return [];
-};
-
-const saveTasksToLocalStorage = (tasks: TaskType[]) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
-};
-
-const initialState: TaskType[] = loadTasksFromLocalStorage();
+const initialState: TaskType[] = [];
 
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
+    initTasks(state, { payload }: PayloadAction<TaskType>) {
+      saveTasksToLocalStorage(payload);
+      return payload
+    },
     addTask(state, { payload }: PayloadAction<TaskType>) {
       const updatedState: TaskType[] = [...state, payload];
       saveTasksToLocalStorage(updatedState);
@@ -56,6 +47,7 @@ export const tasksSlice = createSlice({
 });
 
 export const {
+  initTasks,
   addTask,
   toggleTask,
   deleteTask,

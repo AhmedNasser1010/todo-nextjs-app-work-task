@@ -18,9 +18,12 @@ export default function AddTaskBar() {
   };
 
   return (
-    <div className="fixed w-[calc(100%-40px)] bg-background bottom-5 left-5 rounded-3xl p-5 border border-black shadow-[4px_7px_0px_0px]">
-      <TaskInputs values={values} handleSetValue={handleSetValue} errors={errors} />
-      <BarButtons values={values} setValues={setValues} setErrors={setErrors} />
-    </div>
+    <>
+      <div className="fixed w-[calc(100%-40px)] bg-background bottom-5 left-5 rounded-3xl p-5 border border-black shadow-[4px_7px_0px_0px]">
+        <TaskInputs values={values} handleSetValue={handleSetValue} errors={errors} />
+        <BarButtons values={values} setValues={setValues} setErrors={setErrors} />
+      </div>
+      <div className='w-[calc(100%-40px)] h-[130px]'></div>
+    </>
   );
 }

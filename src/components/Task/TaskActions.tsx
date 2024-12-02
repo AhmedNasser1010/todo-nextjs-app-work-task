@@ -1,4 +1,3 @@
-import ActionIcon from './ActionIcon'
 import { SquareCheck } from "lucide-react";
 import { useAppDispatch } from '@/rtk/hooks';
 import { deleteTask, toggleTask, updateTask } from '@/rtk/slices/tasksSlice';
@@ -15,16 +14,6 @@ export default function TaskActions({ task }: { task: TaskType }) {
     dispatch(deleteTask(task.id))
   }
 
-  const handleEditTask = (newValues: TaskType) => {
-    dispatch(updateTask({
-      ...newValues,
-      id: task.id,
-      title: newValues.title,
-      description: newValues.description,
-      updatedAt: Date.now()
-    }))
-  }
-
   const handleToggleTask = () => {
     dispatch(toggleTask(task.id))
   }
@@ -32,8 +21,10 @@ export default function TaskActions({ task }: { task: TaskType }) {
   return (
     <div className="flex">
       <DeleteTaskDialog handleDeleteTask={handleDeleteTask} title={task.title} />
-      <EditTaskDialog handleEditTask={handleEditTask} task={task} />
-      <ActionIcon><SquareCheck size={iconSize} onClick={handleToggleTask} /></ActionIcon>
+      <EditTaskDialog task={task} />
+      <div className="w-7 h-5 flex items-center justify-center cursor-pointer">
+        <SquareCheck size={iconSize} onClick={handleToggleTask} />
+      </div>
     </div>
   )
 }
