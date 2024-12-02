@@ -1,6 +1,6 @@
 import { SquareCheck } from "lucide-react";
 import { useAppDispatch } from '@/rtk/hooks';
-import { deleteTask, toggleTask, updateTask } from '@/rtk/slices/tasksSlice';
+import { deleteTask, toggleTask } from '@/rtk/slices/tasksSlice';
 import { TaskType } from '@/types/TaskType';
 
 import DeleteTaskDialog from './DeleteTaskDialog'

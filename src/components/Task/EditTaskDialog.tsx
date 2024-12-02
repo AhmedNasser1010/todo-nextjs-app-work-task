@@ -73,7 +73,6 @@ export default function EditTaskDialog({
   return (
     <>
       <DialogTrigger
-        open={open}
         setOpen={setOpen}
         className="w-7 h-5 flex items-center justify-center cursor-pointer"
       >

@@ -23,7 +23,7 @@ export default function DeleteTaskDialog({
 
   return (
     <>
-      <DialogTrigger open={open} setOpen={setOpen}  className='w-7 h-5 flex items-center justify-center cursor-pointer'>
+      <DialogTrigger setOpen={setOpen}  className='w-7 h-5 flex items-center justify-center cursor-pointer'>
         <Trash size={14} />
       </DialogTrigger>
       <Dialog open={open}>

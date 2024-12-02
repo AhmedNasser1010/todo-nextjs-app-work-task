@@ -21,7 +21,7 @@ export default function Home() {
   // initial tasks load from localStorage from useEffect while localStorage is a client side
   useEffect(() => {
     dispatch(initTasks(loadTasksFromLocalStorage()))
-  }, [])
+  }, [dispatch])
 
   const handleSetSearchKey = (key: string) => {
     setSearchKey(key);
