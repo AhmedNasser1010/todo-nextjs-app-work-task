@@ -9,7 +9,7 @@ export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    initTasks(state, { payload }: PayloadAction<TaskType>) {
+    initTasks(state, { payload }: PayloadAction<TaskType[]>) {
       saveTasksToLocalStorage(payload);
       return payload
     },
