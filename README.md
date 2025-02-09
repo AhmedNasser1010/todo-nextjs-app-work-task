@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Code review
 
-## Getting Started
+## Issues
+1. Task Card Edit Icon Disappears: **DONE**
+When the edit modal opens, the edit icon on the task card disappears, which is inconsistent and creates a jarring user experience.
+Recommendation: Keep the edit icon visible and consistent, even when the edit modal is open. This ensures a smoother and more intuitive UI.
 
-First, run the development server:
+3. Task Card Delete Icon Disappears: **DONE**
+Similar to the edit icon issue, the delete icon disappears when the remove modal is opened.
+Recommendation: Ensure that the delete icon remains visible and consistent for better UX and visual feedback.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Edit Action Triggered Without Changes: **DONE**
+The edit action is enabled and triggered even if no changes are made to the task's details, leading to unnecessary operations.
+Recommendation: Only enable and allow the edit action to be triggered if there are actual changes detected in the task details.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Edit Resets Completed Task to Uncompleted: **DONE**
+Editing a completed task causes it to reset to an uncompleted state, which is a significant functional issue.
+Recommendation: Preserve the task's "completed" status during the edit operation unless explicitly changed by the user.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+5. Scrolling Issue: **DONE**
+When the number of task cards exceeds the page height, the cards are not scrollable, making some tasks inaccessible.
+Recommendation: Implement proper scrolling or pagination to ensure all task cards are accessible, regardless of their quantity.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. Excessive Component Splitting: **Hmmm**
+The codebase contains an overabundance of small, fragmented components (e.g., the "Modal" folder in the uploaded image). While modularization is good, excessive splitting can increase complexity and reduce maintainability.
+Recommendation: Merge closely related components into a single reusable component. For example:
+Consolidate components like DialogTitle, DialogHeader, and DialogFooter into a single Dialog component with configurable slots or props.
+Simplify component structure to improve clarity and reduce unnecessary boilerplate.
